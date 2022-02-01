@@ -1,3 +1,13 @@
+const modalContainer = document.querySelector(".modal-background");
+
+function showModal(message) {
+    console.log(message)
+    modalContainer.style.display = "block";
+    modalContainer.querySelector(".content").textContent = message;
+    modalContainer.querySelector("#close-modal").onclick = ()=> 
+                            modalContainer.style.display = "none";
+}
+
 
 
 var validacion = false;
@@ -16,10 +26,10 @@ function verificarTexto() {
     if ((/[~!@#$%^&*()_+|}{[\]\\\/?><:"`;.,áéíóúàèìòù']/.test(inputUsuario)) ||
         (/[0-9]/.test(inputUsuario)) ||
         (/[A-Z]/.test(inputUsuario))) {
-        alert("No se permiten caracteres especiales y/o mayúsculas");
+        showModal("No se permiten caracteres especiales y/o mayúsculas")
         validacion = false;
     } else if (inputUsuario == "") {
-        alert("Ingrese un texo para encriptar/desencriptar");
+        showModal("Ingrese un texo para encriptar/desencriptar");
         validacion = false;
     } else {
         validacion = true;
